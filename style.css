@@ -77,3 +77,11 @@ ul, li{list-style: none;}
 }
 .page_1,
 .page_3{background-color : #fff;}
+
+.page_2_img{
+	margin : 10px auto;
+	width : 100%;
+	max-width : 773px;
+	height : auto;
+	display : block;
+}
