@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/* 폰트 */
+@font-face{
+	font-family: "notosans";
+	src: url(font/NotoSansMonoCJKkr-Regular.otf);
+	font-weight: 400;
+	font-style: normal;
+} /* "notosans", sans-serif; */
+@font-face{
+	font-family: "notosans";
+	src: url(font/NotoSansMonoCJKkr-Bold.otf);
+	font-weight: 600;
+	font-style: bold;
+} /* "notosans", sans-serif; */
+
+/* reset */
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+	-webkit-font-smoothig: antialised;
+} /* 전체 초기화 */
+html, body{font: normal .8vw "notosans", sans-serif;}
+body{
+  width : 100%;
+  overflow-x : hidden;
+}
+iframe, video, img, fieldset, input{
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	font-size: inherit;
+	border: none;
+	background: none;
+} /* 하이퍼링크 초기화 */
+table{
+	padding: 0;
+	border-spacing: 0;
+	border: 0;
+	border-collapse: collapse;
+} /* 표 공통 */
+th, td{padding: 0; margin: 0;} /* 표 제목, 내용 공통 */
+ul, li{list-style: none;}
+
+#intro,
+.page,
+#outtro{padding : .7vw;}
+
+#intro,
+.page_2,
+#outtro{
+  background-color : #111;
+  color : white;
+}
+
+#intro{
+  font-size : .9vw;
+  font-weight : bold;
+}
+
+.page,
+#outtro{line-height : 1.5vw;}
+
+.page strong{
+  font-size : .9vw;
+  display : block;
+  margin : .2em 0;
+}
+.page_1,
+.page_3{background-color : #fff;}
