@@ -51,6 +51,13 @@ table{
 th, td{padding: 0; margin: 0;} /* 표 제목, 내용 공통 */
 ul, li{list-style: none;}
 
+.color_1{
+	background-color : red;
+	color : white;
+	padding: 1px 3px;
+	border-radius: 3px;
+}
+
 #intro,
 .page,
 #outtro{padding : 15px;}
