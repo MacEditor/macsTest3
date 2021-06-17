@@ -77,6 +77,18 @@ ul, li{list-style: none;}
 .page,
 #outtro{line-height : 26px;}
 
+.page h3{
+  font-size : 24px;
+	font-style : italic;
+  display : inline-block;
+  margin : .2em 0;
+}
+.page_1 h3{
+	background-color: #111;
+	color : white;
+	padding : 10px 15px 10px 10px;
+	border-radius: 10px;
+}
 .page strong{
   font-size : 18px;
   display : block;
