@@ -82,13 +82,20 @@ ul, li{list-style: none;}
   display : block;
   margin : .2em 0;
 }
-.page_1,
-.page_3{background-color : #fff;}
+.page_1{background-color : #fff;}
 
-.page_2_img{
+.img_file{
 	margin : 10px auto;
 	width : 100%;
-	max-width : 773px;
 	height : auto;
 	display : block;
+}
+.page_2_img{max-width : 773px;}
+.no1_img{
+	max-width : 567px;
+	margin : 10px 0;
+}
+.no2_img{
+	max-width : 680px;
+	margin : 10px 0;
 }
