@@ -1,38 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>range_bar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<section class="wrap">
+<html>
+  <head>
+    <title>Weiben - Wheel of fortune</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
 
-  <p class="wrap_bkd"></p>
-
-  <div class="wrap2">
-
-    <div class="img">
-      <p class="ment ment1">SUDIO</p>
-      <p class="ment ment2">ETT</p>
-      <p class="wallpaper"></p>
-      <img src="model.png" alt="#model">
-      <img src="item.png" alt="#item">
-      <img src="ett.png" alt="#ett">
+  <body>
+    <div class="box">
+      <div id="app">
+        <img class="marker" src="marker.png"/>
+        <img class="wheel" src="wheel.png"/>
+      </div>
+      <a class="button" href="#">START</a>
+      <div class="benefit"> </div>
     </div>
 
-    <div class="controls_range">
-      <span class="rangebar"></span>
-      <span class="rangeball"></span>
-      <input type="range" id="jsRange" min="0" max="1.0" value="1.0" step="0.1">
-    </div>
-
-  </div>
-
-</section>
-
-  <script src="app.js"></script>
-</body>
+    <script src="confetti.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
