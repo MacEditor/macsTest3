@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+/* 1280이하 시작 */
+@media all and (min-width: 1025px) and (max-width: 1280px){
+.menu_list{display: none;}
+.main_wrap{height : 800px;}
+.menu_list_m{
+  display: inline-block;
+  margin-right: 35px;
+  width : 100px;
+  height : 100%;
+  float : right;
+  text-align: center;
+  cursor : pointer;
+
+  display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+  -webkit-box-orient: vertical;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.menu_list_m::after,
+.menu_list_m::before,
+.menu_more{
+  width : 55px;
+  height : 5px;
+  background-color : white;
+  border-radius : 5px;
+  transition : .3s ease-in-out;
+}
+.menu_list_m::after,
+.menu_list_m::before{content : '';}
+.menu_list_m::before{transform : translateY(-13px);}
+.menu_list_m::after{transform : translateY(13px);}
+/* 적용 */
+.menu_list_m.active::after,
+.menu_list_m.active::before,
+.menu_list_m.active .menu_more{background-color : white;}
+.menu_list_m.active .menu_more{
+  transform : translateX(-100px);
+  opacity : 0;
+}
+.menu_list_m.active::before{transform : translateY(5px) rotate(45deg);}
+.menu_list_m.active::after{transform : translateY(-5px) rotate(-45deg);}
+
+/* 나에 대하여 시작 */
+.about_me{height : 800px;}
+/* .about_me1_img{width : auto;}
+.about_me1_img img{width : 382px; height : auto;}
+.about_me2{
+  padding-top : 193px;
+  padding-left : 80px;
+}
+.about_info2{
+  width : 90%;
+  max-width: 654px;
+  height : 300px;
+  overflow-y: scroll;
+}
+.about_info2 > br{display: none;} */
+/* 나에 대하여 끝 */
+
+/* 숙련도 시작 */
+.skills{max-height : 940px;}
+.skills_total{display: none;}
+.skills_infobox{
+  margin : 37px auto 0 auto;
+  width : 90%;
+  max-width : 843px;
+  height : 574px;
+
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.skills_infobox2{
+  width : 100%;
+  max-width : 843px;
+  height: 169px;
+  opacity: 1;
+  transform: none;
+}
+.skills_infobox2:hover{transform: none;}
+.skills_infobox2 > div{
+  box-sizing: border-box;
+  padding : 0 59px 0 46px;
+
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.skills_icon{
+  margin-top: 0;
+  width : 112px;
+  height : 112px;
+}
+.skills_icon img{max-width: 57px;}
+.skills_info3{margin-top: 0;}
+.skills_info3 > br{display: block;}
+.skills_info4{
+  margin: 0;
+  max-height : 100px;
+  width : 380px;
+}
+/* .skills{height : 800px;}
+.skills_info1{margin-top : 120px;}
+.skills_info2{margin: 18px auto 0 auto;}
+.skills_infobox{height : 450px;}
+.skills_infobox2:hover{
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+.skills_icon{
+  width : 150px;
+  height : 150px;
+}
+.skills_icon > img{
+  width : 50%;
+  height : auto;
+}
+.skills_info3{margin-top: 35px;} */
+/* 숙련도 끝 */
+}
+/* 1280 이하 끝 */

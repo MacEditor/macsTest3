@@ -1,0 +1,125 @@
+@charset "utf-8";
+
+/* 600이하 시작 */
+@media all and (max-width: 600px){
+.menubar{height : 80px;} /* 메인메뉴 전체영역 */
+.menubar.active{height : 70px;}
+.menu_logo{
+  font-size : 7.5vw;
+  width : 60%;
+  max-width : 354px;
+}
+.menu_list_m{
+  width : 40%;
+  max-width : 80px;
+  margin-right: 16px;
+}
+.menu_list_m::after,
+.menu_list_m::before,
+.menu_more{
+  width : 40px;
+  height : 3px;
+}
+.menu_list_m::before{transform : translateY(-10px);}
+.menu_list_m::after{transform : translateY(10px);}
+/* 적용 */
+.menu_list_m.active::before{transform : translateY(3px) rotate(45deg);}
+.menu_list_m.active::after{transform : translateY(-3px) rotate(-45deg);}
+
+/* 메인슬라이드 시작 */
+.main_info1{font-size : 22px;}
+.main_info2{font-size : 60px;}
+.main_info3{font-size : 30px;}
+.main_info4{
+  width : 140px;
+  height : 45px;
+  font-size : 22px;
+}
+.main_info4:hover{transform: translateX(10px);}
+/* 메인슬라이드 끝 */
+
+/* 나에 대하여 시작 */
+.about_me{height : 1100px;}
+.about_me1_img img{width : 65%;}
+.about_info1{font-size : 34px;}
+.about_info1 span{ font-size : 31px;}
+.about_info2{
+  margin-top : 23px;
+  font-size : 19px;
+  width : 85%;
+  max-height : 227px;
+}
+.about_info3{
+  margin-top : 26px;
+  width : 160px;
+  height : 58px;
+  font-size : 23px;
+}
+/* 나에 대하여 끝 */
+
+/* 숙련도 시작 */
+.skills{height : 1300px;}
+.skills_info1{
+  margin-top : 55px;
+  font-size : 34px;
+}
+.skills_info2{
+  margin: 29px auto 0 auto;
+  width : 145px;
+  font-size : 31px;
+}
+.skills_total{
+  display: block;
+  margin: 41px auto 0;
+}
+.skills_infobox{max-width : 496px;}
+.skills_infobox2{
+  max-width : none;
+  padding: 0;
+}
+.skills_icon{display : none;}
+.skills_info3{
+  float : none;
+  margin-top: 33px;
+  font-size: 31px;
+  width : 100%;
+  max-width : none;
+}
+.skills_info3 > br{display: none;}
+.skills_info4{
+  float : none;
+  margin: 10px auto 0 auto;
+  font-size: 19px;
+  max-height : 100px;
+  max-width : 320px;
+  display: inline-block;
+}
+/* 숙련도 끝 */
+
+/* 포트폴리오 시작 */
+.portfolio{
+  height : 2015px;
+  padding-top: 79px;
+}
+.portfolio_box{
+  max-width : 550px;
+  height : auto;
+  margin : 75px auto 0;
+}
+.portfolio_img{
+  width: 100%;
+  max-width : auto;
+  height : 395px;
+  line-height : 395px;
+  margin-top: 42px;
+}
+.portfolio_img1{margin-top: 0;}
+.portfolio_img1,
+.portfolio_img3{float: none;}
+.portfolio_img2,
+.portfolio_img4{float: none;}
+.portfolio_img3,
+.portfolio_img4{margin-top: 42px;}
+/* 포트폴리오 끝 */
+}
+/* 600이하 끝 */

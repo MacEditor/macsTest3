@@ -1,45 +1,242 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Music Player</title>
-  </head>
-  <body>
-    <h1>Music Player</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Junmo_Portfolio</title>
+  <!-- css -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/layout_1280.css">
+  <link rel="stylesheet" href="css/layout_1024.css">
+  <link rel="stylesheet" href="css/layout_600.css">
+  <!-- jquery -->
+  <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+  <!-- main_js -->
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+  <div id="progressbar"></div>
+	<div id="scrollPath"></div>
 
-    <div class="music-container" id="music-container">
-      <div class="music-info">
-        <h4 id="title"></h4>
-        <div class="progress-container" id="progress-container">
-          <div class="progress" id="progress"></div>
-        </div>
-      </div>
+  <nav class="menubar">
+    <a class="menu_logo" href="#">Mac's Portfo<span>lio</span></a>
+    <ul class="menu_list">
+      <li id="menu_marker"></li>
+      <li class="menu_list2" data-link="page_1">
+        <span>HOME</span>
+        <span>홈</span>
+      </li>
+      <li class="menu_list2" data-link="page_2">
+        <span>About Me</span>
+        <span>나에 대하여</span>
+      </li>
+      <li class="menu_list2" data-link="page_3">
+        <span>Skills</span>
+        <span>숙련도</span>
+      </li>
+      <li class="menu_list2" data-link="page_4">
+        <span>Contact</span>
+        <span>이메일</span>
+      </li>
+      <li class="menu_list2" data-link="page_5">
+        <span>Portfolio</span>
+        <span>포트폴리오</span>
+      </li>
+    </ul>
 
-      <audio src="music/falling.mp3" id="audio"></audio>
+    <div class="menu_list_m">
+      <p class="menu_more"></p>
+    </div>
+  </nav>
 
-      <div class="img-container">
-        <img src="images/falling.jpg" alt="music-cover" id="cover" />
-      </div>
-      <div class="navigation">
-        <button id="prev" class="action-btn">
-          <i class="fas fa-backward"></i>
-        </button>
-        <button id="play" class="action-btn action-btn-big">
-          <i class="fas fa-play"></i>
-        </button>
-        <button id="next" class="action-btn">
-          <i class="fas fa-forward"></i>
-        </button>
+  <section class="menu_more_list">
+
+  </section>
+
+  <script type="text/javascript"> // 메뉴 호버 애니
+	var marker = document.querySelector('#menu_marker');
+	var item = document.querySelectorAll('.menu_list2');
+
+  function indicator(e){
+		marker.style.left = e.offsetLeft+"px";
+		marker.style.width = e.offsetWidth+"px";
+		marker.style.opacity = 1;
+	}
+  $(window).scroll(function(){
+    if($(this).scrollTop() > 40){
+		  marker.classList.add("active");
+		}
+    else{
+      marker.classList.remove("active");
+  	}
+  });
+
+	item.forEach(Link => {
+		Link.addEventListener('mouseenter', (e) => {
+			indicator(e.target);
+		});
+		Link.addEventListener('mouseleave', (e) => {
+			marker.style.width = 0;
+			marker.style.opacity = 0;
+		});
+	})
+	</script>
+
+  <div class="main_wrap main_box" id="page_1">
+    <div class="main_wrap1" style="background-image: url(img/main_bkd.png)">
+      <div class="main_info">
+        <p class="main_info1">My name is</p>
+        <h2 class="main_info2">Jun Mo Sung</h2>
+        <p class="main_info3">And I'm a <span class="main_typed"></span></p>
+        <p class="main_info4 more_btn" data-link="page_5">Portfolio</p>
       </div>
     </div>
+    <div class="main_wrap2" style="background-image: url(img/web1.png)"></div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script type="text/javascript" src="js/typed.js"></script>
+  <script type="text/javascript">
+  var typed = new Typed('.main_typed', {
+    strings: [
+      'Designer',
+      'Publisher'
+    ],
+    typeSpeed: 65,
+    backSpeed: 65,
+    loop: true
+  });
+  </script>
+
+  <div class="about_me main_box" id="page_2">
+    <div class="about_me1">
+      <p class="about_me1_img">
+        <img src="img/about_me_img.png" alt="#about_me_img">
+      </p>
+    </div>
+    <div class="about_me2">
+      <h3 class="about_info1">나에 대하여 <span>About me</span></h3>
+      <p class="about_info2">
+저의 이름은 성준모 이고, 저는 퍼블리셔 & 디자이너 입니다. 포트폴리오를 만들며 다양한 사이트들을 비교/분석 조사해보기도 하였고 그 안에 포함되어 있는 제이쿼리 파일, CSS파일, 마크업 구조등을 탐색하며 더 다양하고 심층 있게 사이트를 볼 수 있었습니다. 포트폴리오 작업을 하면서 기본적인 HTML 마크업 작업과 CSS에 대한 이해도가 높아졌고 다른 웹 사이트를 방문하였을 때도 HTML을 어떻게 구성하였고 어떠한 CSS효과를 추가하였는지 예측하거나 분석할 수 있는 능력도 길러졌다 생각됩니다. 또한 반응형 사이트들에 대해서도 심도 깊게 분석하였고 반응형 포트폴리오를 만들며 기기에서 보여지는 화면은 해상도가 작을수록 단순하고 큰 이미지가 사용되어야 하고 복잡한 디자인보다 그리드 방식을 이용한 웹 디자인이 효율적이라는 것을 깨닫기도 하였습니다.
+      </p>
+      <p class="about_info3 more_btn" data-link="page_4">Contact me</p>
+    </div>
+  </div>
+
+  <div class="skills main_box" id="page_3">
+    <h3 class="skills_info1">숙련도</h3>
+    <p class="skills_info2">Skills</p>
+    <div class="skills_infobox">
+      <div class="skills_infobox2">
+        <div>
+          <div class="skills_total">
+            <p class="skills_total2"><span class="skills_point skills_point1">0</span>&#47;100</p>
+            <p class="skills_graph skills_graph1"></p>
+          </div>
+          <p class="skills_icon"><img src="img/skill_icon1.png" alt="#skill_iconimg1" width="144" height="203"></p>
+          <h3 class="skills_info3">HTML</h3>
+          <p class="skills_info4">
+            웹 표준에 근거하여 HTML구성이 가능하며 오류 발생시 구역별로 나누어 확인하여 신속한 수정 및 개선이 가능합니다
+          </p>
+        </div>
+      </div>
+      <div class="skills_infobox2">
+        <div>
+          <div class="skills_total">
+            <p class="skills_total2"><span class="skills_point skills_point2">0</span>&#47;100</p>
+            <p class="skills_graph skills_graph2"></p>
+          </div>
+          <p class="skills_icon"><img src="img/skill_icon2.png" alt="#skill_iconimg2" width="144" height="203"></p>
+          <h3 class="skills_info3">JS &<br> JQUERY</h3>
+          <p class="skills_info4">
+            JS를 활용한 단순 슬라이드 제작이 가능하고 JQUERY를 활용해 오브젝트의 시각적 등장효과 등 세부적인 항목들을 활용할 수 있습니다
+          </p>
+        </div>
+      </div>
+      <div class="skills_infobox2">
+        <div>
+          <div class="skills_total">
+            <p class="skills_total2"><span class="skills_point skills_point3">0</span>&#47;100</p>
+            <p class="skills_graph skills_graph3"></p>
+          </div>
+          <p class="skills_icon"><img src="img/skill_icon3.png" alt="#skill_iconimg3" width="144" height="203"></p>
+          <h3 class="skills_info3">CSS</h3>
+          <p class="skills_info4">
+            Animation 과 hover checked 효과 등 CSS 활용 범위내에서 최대한 JQUERY와 JS의 사용없이 시각적 동적인 효과를 부여할 수 있습니다
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  import React from 'react';
+  import emailjs from 'emailjs-com';
+
+    function sendEmail(e) {
+      e.preventDefault();
+
+      emailjs.sendForm('gmail', 'Portfolio_email', e.target, 'user_FVWfjRv8rhAyZz9DyGk96')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset();
+    }
+  </script>
+
+  <form method="post" class="contact main_box" id="page_4" onsubmit="sendEmail">
+    <div class="contact_box">
+      <div class="contact_box1">
+        <div class="contact_box1_1">
+          <h3 class="contact_info1">Contact Me</h3>
+          <p class="contact_info2">이름<span>NAME</span></p>
+          <div class="contact_info3 contact_input">
+            <input type="text" name="name" required>
+            <p class="input_underline"></p>
+            <label>Full Name</label>
+          </div>
+          <p class="contact_info4">이메일<span>E-MAIL</span></p>
+          <div class="contact_info5 contact_input">
+            <input type="text" name="email" required>
+            <p class="input_underline"></p>
+            <label>Example@naver.com</label>
+          </div>
+        </div>
+      </div>
+      <div class="contact_box2">
+        <div class="contact_box2_1">
+          <p class="contact_info5">Message</p>
+          <textarea class="contact_info6" name="message" required></textarea>
+          <label class="contact_info7">Write Message...</label>
+        </div>
+        <div class="contact_submit">
+          <input type="submit" value="">
+          <p class="submit_text">전송<span>submit</span></p>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="portfolio main_box" id="page_5">
+    <h3 class="portfolio_info1">Portfolio</h3>
+    <div class="portfolio_box">
+      <a href="#cafe" class="portfolio_img portfolio_img1" style="background-image: url(img/web1.png)"></a>
+      <a href="#market" class="portfolio_img portfolio_img2">인천대교</a>
+      <a href="#pc" class="portfolio_img portfolio_img3">헌터PC 랜딩페이지</a>
+      <a href="#school" class="portfolio_img portfolio_img4">학원 포트폴리오</a>
+    </div>
+  </div>
+
+  <script type="text/ecmascript"> // 스크롤 애니
+	let progress = document.getElementById('progressbar');
+	let totalHeight = document.body.scrollHeight - window.innerHeight;
+	window.onscroll = function(){
+		let progressHeight = (window.pageYOffset / totalHeight) * 100;
+		progress.style.height = progressHeight + "%";
+	}
+	</script>
+</body>
 </html>
