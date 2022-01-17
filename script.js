@@ -1,115 +1,178 @@
-// button effect
-const btn = document.querySelector('.button');
+const musicContainer = document.getElementById('music-container');
+const playBtn = document.getElementById('play');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 
-  btn.addEventListener('click', function(e){
-    let x = e.clientX - e.target.offsetLeft;
-    let y = e.clientY - e.target.offsetTop;
+const audio = document.getElementById('audio');
+const progress = document.getElementById('progress');
+const progressContainer = document.getElementById('progress-container');
+const title = document.getElementById('title');
+const cover = document.getElementById('cover');
+const currTime = document.querySelector('#currTime');
+const durTime = document.querySelector('#durTime');
 
-    let ripples = document.createElement('span');
-    ripples.style.left = x + 'px';
-    ripples.style.top = y + 'px';
-    ripples.classList = 'rip';
-    this.appendChild(ripples);
+// Song titles
+const songs = ['drunk', 'down', 'falling'];
 
-    setTimeout(() => {
-      ripples.remove();
-    },405);
-  });
+// Keep track of song
+let songIndex = 2;
 
-// Immediately invoked function expression
-// to not pollute the global scope
-(function() {
-  const wheel = document.querySelector('.wheel');
-  const startButton = document.querySelector('.button');
-  const $benefit = document.querySelector('.benefit');
+// Initially load song details into DOM
+loadSong(songs[songIndex]);
 
-  let deg = 0;
-  let zoneSize = 30; // deg
+// Update song details
+function loadSong(song) {
+  title.innerText = song;
+  audio.src = `music/${song}.mp3`;
+  cover.src = `images/${song}.jpg`;
+}
 
-  // Counter clockwise
-  const symbolSegments = {
-    1: "1시간 무료",
-    2: "1시간 무료",
-    3: "2시간 무료",
-    4: "1시간 무료",
-    5: "음료 1종 무료",
-    6: "2시간 무료",
-    7: "1시간 무료",
-    8: "1시간 무료",
-    9: "1시간 무료",
-    10: "에어팟 프로",
-    11: "1시간 무료",
-    12: "1시간 무료",
+// Play song
+function playSong() {
+  musicContainer.classList.add('play');
+  playBtn.querySelector('i.fas').classList.remove('fa-play');
+  playBtn.querySelector('i.fas').classList.add('fa-pause');
+
+  audio.play();
+}
+
+// Pause song
+function pauseSong() {
+  musicContainer.classList.remove('play');
+  playBtn.querySelector('i.fas').classList.add('fa-play');
+  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+
+  audio.pause();
+}
+
+// Previous song
+function prevSong() {
+  songIndex--;
+
+  if (songIndex < 0) {
+    songIndex = songs.length - 1;
   }
 
-  let $item = document.createElement('img');
+  loadSong(songs[songIndex]);
 
-  const handleWin = (actualDeg) => {
-    const winningSymbolNr = Math.ceil(actualDeg / zoneSize);
-    $benefit.innerText = symbolSegments[winningSymbolNr];
-    $benefit.classList.add('active');
-    if(symbolSegments[winningSymbolNr] === "1시간 무료"){
-      $item.src = "item1.png";
-    }else if(symbolSegments[winningSymbolNr] === "2시간 무료"){
-      $item.src = "item2.png";
-    }else if(symbolSegments[winningSymbolNr] === "음료 1종 무료"){
-      $item.src = "item3.png";
-    }else if(symbolSegments[winningSymbolNr] === "에어팟 프로"){
-      $item.src = "item4.png";
-    }else{
-      $benefit.innerText = "오류가 발생했습니다 다시 돌려주세요";
-    }
-    $benefit.prepend($item);
-    $item.style.display = "inline-block";
+  playSong();
+}
+
+// Next song
+function nextSong() {
+  songIndex++;
+
+  if (songIndex > songs.length - 1) {
+    songIndex = 0;
   }
 
-  startButton.addEventListener('click', () => {
-    // Reset benefit
-    $benefit.innerText = " ";
-    $benefit.classList.remove('active');
-    $item.style.display = "none";
-    // Disable button during spin
-    startButton.style.pointerEvents = 'none';
-    // Calculate a new rotation between 5000 and 10 000
-    deg = Math.floor(5000 + Math.random() * 5000);
-    // Set the transition on the wheel
-    wheel.style.transition = 'all 10s ease-out';
-    // Rotate the wheel
-    wheel.style.transform = `rotate(${deg}deg)`;
-    // Apply the blur
-    wheel.classList.add('blur');
-  });
+  loadSong(songs[songIndex]);
 
-  wheel.addEventListener('transitionend', () => {
-    // Remove blur
-    wheel.classList.remove('blur');
-    // Enable button when spin is over
-    startButton.style.pointerEvents = 'auto';
-    // Need to set transition to none as we want to rotate instantly
-    wheel.style.transition = 'none';
-    // Calculate degree on a 360 degree basis to get the "natural" real rotation
-    // Important because we want to start the next spin from that one
-    // Use modulus to get the rest value
-    const actualDeg = deg % 360;
-    // Set the real rotation instantly without animation
-    wheel.style.transform = `rotate(${actualDeg}deg)`;
-    // Calculate and benefit the winning symbol
-    handleWin(actualDeg);
+  playSong();
+}
 
-    // confetti.stop();
-    const startit = () => {
-      setTimeout(function () {
-        confetti.start();
-      }, 1000);
-    };
+// Update progress bar
+function updateProgress(e) {
+  const { duration, currentTime } = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
 
-    const stopit = () => {
-      setTimeout(function () {
-        confetti.stop();
-      }, 6000);
-    };
+// Set progress bar
+function setProgress(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
 
-    startit();
-    stopit();
-  });
-})();
+  audio.currentTime = (clickX / width) * duration;
+}
+
+//get duration & currentTime for Time of song
+function DurTime (e) {
+	const {duration,currentTime} = e.srcElement;
+	var sec;
+	var sec_d;
+
+	// define minutes currentTime
+	let min = (currentTime==null)? 0:
+	 Math.floor(currentTime/60);
+	 min = min <10 ? '0'+min:min;
+
+	// define seconds currentTime
+	function get_sec (x) {
+		if(Math.floor(x) >= 60){
+
+			for (var i = 1; i<=60; i++){
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+					sec = Math.floor(x) - (60*i);
+					sec = sec <10 ? '0'+sec:sec;
+				}
+			}
+		}else{
+		 	sec = Math.floor(x);
+		 	sec = sec <10 ? '0'+sec:sec;
+		 }
+	}
+
+	get_sec (currentTime,sec);
+
+	// change currentTime DOM
+	currTime.innerHTML = min +':'+ sec;
+
+	// define minutes duration
+	let min_d = (isNaN(duration) === true)? '0':
+		Math.floor(duration/60);
+	 min_d = min_d <10 ? '0'+min_d:min_d;
+
+
+	 function get_sec_d (x) {
+		if(Math.floor(x) >= 60){
+
+			for (var i = 1; i<=60; i++){
+				if(Math.floor(x)>=(60*i) && Math.floor(x)<(60*(i+1))) {
+					sec_d = Math.floor(x) - (60*i);
+					sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+				}
+			}
+		}else{
+		 	sec_d = (isNaN(duration) === true)? '0':
+		 	Math.floor(x);
+		 	sec_d = sec_d <10 ? '0'+sec_d:sec_d;
+		 }
+	}
+
+	// define seconds duration
+
+	get_sec_d (duration);
+
+	// change duration DOM
+	durTime.innerHTML = min_d +':'+ sec_d;
+
+};
+
+// Event listeners
+playBtn.addEventListener('click', () => {
+  const isPlaying = musicContainer.classList.contains('play');
+
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});
+
+// Change song
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+// Time/song update
+audio.addEventListener('timeupdate', updateProgress);
+
+// Click on progress bar
+progressContainer.addEventListener('click', setProgress);
+
+// Song ends
+audio.addEventListener('ended', nextSong);
+
+// Time of song
+audio.addEventListener('timeupdate',DurTime);
