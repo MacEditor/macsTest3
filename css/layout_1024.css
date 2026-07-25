@@ -191,6 +191,10 @@
 }
 /* 숙련도 끝 */
 
+/* 포트폴리오 시작 */
+.portfolio_img{ font-size: 20px; }	
+/* 포트폴리오 끝 */
+	
 /* 이메일 시작 */
 .contact{height : 1300px;}
 .contact_box{
