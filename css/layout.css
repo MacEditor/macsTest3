@@ -808,4 +808,8 @@
 .portfolio_img4{float: right;}
 .portfolio_img3,
 .portfolio_img4{margin-top: 45px;}
+.portfolio_img1,
+.portfolio_img2,
+.portfolio_img3,
+.portfolio_img4{text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);}									
 /* 포트폴리오 끝 */
