@@ -71,7 +71,7 @@ $(document).ready(function(){
           $(".skills_point1").text(p3_total);
         }
       });
-      p3_point2 = 51;
+      p3_point2 = 71;
       $({ val : 0 }).delay(50).animate({ val : p3_point2 }, {
         duration: 1200,
         step: function(){
